@@ -1,13 +1,19 @@
-enum Role {
-  ADMIN,
-  READ_ONLY,
-  AUTHOR,
-} //hum khud bhi enums ko value de skte hai but sare khudse dena padhta hia  hona chaheye agar default nature change kar rhe hai tou
-
-const person = {
-  name: "bhoraj",
-  age: 23,
-  role: Role.ADMIN,
+const product: {
+  id: string;
+  price: number;
+  tags: any[];
+  details: {
+    title: string;
+    description: string;
+  };
+  tuple: [number, string];
+} = {
+  id: "abc1",
+  price: 12.99,
+  tags: [1, "hot-and-new"],
+  details: {
+    title: "Red Carpet",
+    description: "A great carpet - almost brand-new!",
+  },
+  tuple: [1, "kuchbhi"],
 };
-
-console.log(person);
