@@ -1,18 +1,13 @@
-const product: {
-  id: string;
-  price: number;
-  tags: string[];
-  details: {
-    title: string;
-    description: string;
-  };
-} = {
-  id: "abc1",
-  price: 12.99,
-  tags: ["great-offer", "hot-and-new"],
-  details: {
-    title: "Red Carpet",
-    description: "A great carpet - almost brand-new!",
-  },
+enum Role {
+  ADMIN,
+  READ_ONLY,
+  AUTHOR,
+}
+
+const person = {
+  name: "bhoraj",
+  age: 23,
+  role: Role.ADMIN,
 };
-console.log(product);
+
+console.log(person);
