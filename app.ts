@@ -1,8 +1,18 @@
-function add(n1: number, n2: number): number {
-  return n1 + n2;
-}
-
-const n1 = 1;
-const n2 = 2.8;
-
-console.log(add(n1, n2));
+const product: {
+  id: string;
+  price: number;
+  tags: string[];
+  details: {
+    title: string;
+    description: string;
+  };
+} = {
+  id: "abc1",
+  price: 12.99,
+  tags: ["great-offer", "hot-and-new"],
+  details: {
+    title: "Red Carpet",
+    description: "A great carpet - almost brand-new!",
+  },
+};
+console.log(product);
