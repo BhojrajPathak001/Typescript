@@ -1,15 +1,12 @@
-var product = {
-    id: "abc1",
-    price: 12.99,
-    tags: ["great-offer", "hot-and-new"],
-    details: {
-        title: "Red Carpet",
-        description: "A great carpet - almost brand-new!",
-    },
-    tuple: [1, "kuchbhi"],
+var Role;
+(function (Role) {
+    Role[Role["ADMIN"] = 0] = "ADMIN";
+    Role[Role["READ_ONLY"] = 1] = "READ_ONLY";
+    Role[Role["AUTHOR"] = 2] = "AUTHOR";
+})(Role || (Role = {}));
+var person = {
+    name: "bhoraj",
+    age: 23,
+    role: Role.ADMIN,
 };
-// product.tuple[0] = "2";
-// product.tuple[1] = 1;
-// product.tuple[2] = "hello";
-product.tuple.push("hello");
-console.log(product);
+console.log(person);
