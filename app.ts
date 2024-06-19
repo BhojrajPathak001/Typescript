@@ -16,3 +16,8 @@ const product: {
   },
 };
 console.log(product);
+
+for (const tag of product.tags) {
+  console.log(tag.toUpperCase());
+//   tag.map()
+}
