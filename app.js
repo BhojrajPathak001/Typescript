@@ -6,10 +6,10 @@ var product = {
         title: "Red Carpet",
         description: "A great carpet - almost brand-new!",
     },
+    tuple: [1, "kuchbhi"],
 };
+// product.tuple[0] = "2";
+// product.tuple[1] = 1;
+// product.tuple[2] = "hello";
+product.tuple.push("hello");
 console.log(product);
-for (var _i = 0, _a = product.tags; _i < _a.length; _i++) {
-    var tag = _a[_i];
-    console.log(tag.toUpperCase());
-    //   tag.map()
-}
