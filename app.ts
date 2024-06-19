@@ -1,19 +1,13 @@
-const product: {
-  id: string;
-  price: number;
-  tags: any[];
-  details: {
-    title: string;
-    description: string;
-  };
-  tuple: [number, string];
-} = {
-  id: "abc1",
-  price: 12.99,
-  tags: [1, "hot-and-new"],
-  details: {
-    title: "Red Carpet",
-    description: "A great carpet - almost brand-new!",
-  },
-  tuple: [1, "kuchbhi"],
-};
+function combine(input1: number | string, input2: number | string) {
+  if (typeof input1 === "number" && typeof input2 === "number") {
+    return input1 + input2;
+  } else {
+    return input1.toString() + input2.toString();
+  }
+}
+
+const age = combine(1, 2);
+const fullName = combine("bhojraj ", "pathak");
+
+console.log(age);
+console.log(fullName);
