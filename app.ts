@@ -1,6 +1,8 @@
+type combinable = number | string; //type aliases in typescript
+
 function combine(
-  input1: number | string,
-  input2: number | string,
+  input1: combinable,
+  input2: combinable,
   resultConversion: "as-number" | "as-text" //literal types
 ) {
   if (
