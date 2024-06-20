@@ -10,7 +10,7 @@ function printResult(num: number): void {
 function addAndHandle(n1: number, n2: number, cb: (num: number) => void) {
   const result = n1 + n2;
   const n = cb(result);
-  return n;
+  n.toString();
 }
 
 let combineValues: (n1: number, n2: number) => number;
