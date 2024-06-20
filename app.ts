@@ -1,23 +1,10 @@
-type combinable = number | string; //type aliases in typescript
-
-function combine(
-  input1: combinable,
-  input2: combinable,
-  resultConversion: "as-number" | "as-text" //literal types
-) {
-  if (
-    typeof input1 === "number" &&
-    typeof input2 === "number" &&
-    resultConversion === "as-number"
-  ) {
-    return input1 + input2;
-  } else {
-    return input1.toString() + input2.toString();
-  }
+function add(n1: number, n2: number) {
+  //return type typescript infer kr leta hai
+  return n1 + n2; //here the
 }
 
-const age = combine(1, 2, "as-number");
-const fullName = combine("bhojraj ", "pathak", "as-text");
+function printResult(num: number): void {  
+  console.log(num);
+}
 
-console.log(age);
-console.log(fullName);
+console.log(printResult(add(5, 12)));
