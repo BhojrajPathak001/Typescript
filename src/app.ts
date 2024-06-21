@@ -1,29 +1,60 @@
 class Department {
   name: string;
-  private employees: string[] = [];
-  constructor(n: string) {
+  protected employees: string[] = []; // Private field using #
+
+  constructor(public id: string, n: string) {
+    this.id = id;
     this.name = n;
   }
 
   describe(this: Department) {
-    //yeh this point out krta hai jo isko call krta hai aab agar hum accountingCopy bina name ke call kr de aur type
-    //bhi specify na kre tou log undefined dega but agar type define kre tou
-    //usko object dega pdega same Department ke structure ka
     console.log("Department: " + this.name);
   }
 
   addEmployee(employee: string) {
     this.employees.push(employee);
   }
+
   printEmployees() {
     console.log(this.employees);
   }
 }
 
-const accounting = new Department("Accounting");
+class ItDepartment extends Department {
+  admins: string[];
+  constructor(id: string, admins: string[]) {
+    super(id, "IT");
+    this.admins = admins;
+  }
+}
+
+class AccountingDepartment extends Department {
+  constructor(id: string, private reports: string[]) {
+    super(id, "Accounting");
+  }
+
+  addReport(text: string) {
+    this.reports.push(text);
+  }
+
+  printReports() {
+    console.log(this.reports);
+  }
+  addEmployee(employee: string): void {
+    if (employee === "bhojraj") return;
+    this.employees.push(employee);
+  }
+}
+
+const it = new ItDepartment("d1", ["bhojraj"]);
+it.addEmployee("bhojraj");
+it.addEmployee("kishanraj");
+
+// The following line will give an error because #employees is truly private
+// console.log(accounting.#employees); // SyntaxError in JavaScript and TypeScript error in TypeScript
+
+const accounting = new AccountingDepartment("A1", ["nothing here"]);
 accounting.addEmployee("bhojraj");
 accounting.addEmployee("kishanraj");
-
-console.log(accounting.employees);
 
 accounting.printEmployees();
