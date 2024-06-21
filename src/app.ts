@@ -1,6 +1,6 @@
 class Department {
   name: string;
-
+  private employees: string[] = [];
   constructor(n: string) {
     this.name = n;
   }
@@ -11,8 +11,19 @@ class Department {
     //usko object dega pdega same Department ke structure ka
     console.log("Department: " + this.name);
   }
+
+  addEmployee(employee: string) {
+    this.employees.push(employee);
+  }
+  printEmployees() {
+    console.log(this.employees);
+  }
 }
 
 const accounting = new Department("Accounting");
-const accountingCopy = { name: "bhojraj", describe: accounting.describe };
-accountingCopy.describe();
+accounting.addEmployee("bhojraj");
+accounting.addEmployee("kishanraj");
+
+console.log(accounting.employees);
+
+accounting.printEmployees();
