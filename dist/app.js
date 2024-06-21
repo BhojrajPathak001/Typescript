@@ -27,12 +27,27 @@ class ItDepartment extends Department {
 }
 class AccountingDepartment extends Department {
     reports;
+    lastReport;
     constructor(id, reports) {
         super(id, "Accounting");
         this.reports = reports;
+        this.lastReport = reports[0];
+    }
+    get latestReport() {
+        if (this.lastReport) {
+            return this.lastReport;
+        }
+        throw new Error("No report found");
+    }
+    set latestReport(report) {
+        if (!report) {
+            throw new Error("No report provided");
+        }
+        this.lastReport = report;
     }
     addReport(text) {
         this.reports.push(text);
+        this.lastReport = text;
     }
     printReports() {
         console.log(this.reports);
@@ -49,6 +64,5 @@ it.addEmployee("kishanraj");
 // The following line will give an error because #employees is truly private
 // console.log(accounting.#employees); // SyntaxError in JavaScript and TypeScript error in TypeScript
 const accounting = new AccountingDepartment("A1", ["nothing here"]);
-accounting.addEmployee("bhojraj");
-accounting.addEmployee("kishanraj");
-accounting.printEmployees();
+accounting.latestReport = "";
+console.log(accounting.latestReport);

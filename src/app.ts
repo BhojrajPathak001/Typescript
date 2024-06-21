@@ -29,12 +29,28 @@ class ItDepartment extends Department {
 }
 
 class AccountingDepartment extends Department {
+  private lastReport: string;
   constructor(id: string, private reports: string[]) {
     super(id, "Accounting");
+    this.lastReport = reports[0];
+  }
+  get latestReport() {
+    if (this.lastReport) {
+      return this.lastReport;
+    }
+    throw new Error("No report found");
+  }
+
+  set latestReport(report: string) {
+    if (!report) {
+      throw new Error("No report provided");
+    }
+    this.lastReport = report;
   }
 
   addReport(text: string) {
     this.reports.push(text);
+    this.lastReport = text;
   }
 
   printReports() {
@@ -54,7 +70,6 @@ it.addEmployee("kishanraj");
 // console.log(accounting.#employees); // SyntaxError in JavaScript and TypeScript error in TypeScript
 
 const accounting = new AccountingDepartment("A1", ["nothing here"]);
-accounting.addEmployee("bhojraj");
-accounting.addEmployee("kishanraj");
 
-accounting.printEmployees();
+accounting.latestReport="";
+console.log(accounting.latestReport);
