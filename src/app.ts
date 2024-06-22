@@ -1,12 +1,19 @@
-const names: Array<number> = [2, 3];
+function merge<T extends object, U extends object>(objA: T, objB: U) {
+  return Object.assign(objA, objB);
+}
 
-// names[0].split(" ");
+/*jab hum generics user krte hai aise and hum jab wo generic function call krte hai tou T and U ki
+   jagah dynamic type chale jata hai apne aap humko specify nhi krna pdhta  */
+const mergeObj1 = merge({ name: "bhojraj", hobbies: ["sports"] }, { age: 23 });
+const mergeObj2 = merge<{ name: string }, { age: number }>( //yaha par ese bhi specify kar skte hai but redundant he yeh 
+  { name: "bhojraj" },
+  { age: 23 }
+);
 
-const promise: Promise<number> = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve(10);
-  }, 2000);
-});
-promise.then((data) => {
-  data.split(" ");//this will give error since generic type is number
-});
+console.log(mergeObj1.name); // "bhojraj"
+console.log(mergeObj1.age); // 23
+console.log(mergeObj1.hobbies); // ['sports']
+
+console.log(mergeObj2.name); // "bhojraj"
+console.log(mergeObj2.age); // 23
+console.log(mergeObj2.hobbies); // ['sports']

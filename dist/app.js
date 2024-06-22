@@ -1,5 +1,15 @@
 "use strict";
-const userInput = "";
-const storedData = userInput ?? "default"; //yeh kya krta hai ki agar userInput null or undeined hai tou he default
-//value leta hai wrna nhi leta hia this is called null coalescing
-console.log(storedData);
+function merge(objA, objB) {
+    return Object.assign(objA, objB);
+}
+/*jab hum generics user krte hai aise and hum jab wo generic function call krte hai tou T and U ki
+   jagah dynamic type chale jata hai apne aap humko specify nhi krna pdhta  */
+const mergeObj1 = merge({ name: "bhojraj", hobbies: ["sports"] }, { age: 23 });
+const mergeObj2 = merge(//yaha par ese bhi specify kar skte hai but redundant he yeh 
+{ name: "bhojraj" }, { age: 23 });
+console.log(mergeObj1.name); // "bhojraj"
+console.log(mergeObj1.age); // 23
+console.log(mergeObj1.hobbies); // ['sports']
+console.log(mergeObj2.name); // "bhojraj"
+console.log(mergeObj2.age); // 23
+console.log(mergeObj2.hobbies); // ['sports']
