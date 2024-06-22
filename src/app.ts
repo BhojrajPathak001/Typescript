@@ -1,5 +1,12 @@
-const userInput = "";
-const storedData = userInput ?? "default"; //yeh kya krta hai ki agar userInput null or undeined hai tou he default
-//value leta hai wrna nhi leta hia this is called null coalescing
+const names: Array<number> = [2, 3];
 
-console.log(storedData);
+// names[0].split(" ");
+
+const promise: Promise<number> = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(10);
+  }, 2000);
+});
+promise.then((data) => {
+  data.split(" ");//this will give error since generic type is number
+});
