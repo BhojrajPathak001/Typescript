@@ -1,15 +1,6 @@
 "use strict";
-function moveAnimal(animal) {
-    let speed;
-    //rather than using in keyword for checking some property we use a commmon property in all inteface which
-    //jo ek dusre ko alg banate hai and uske basis par check kr lete hai using switch case
-    switch (animal.tpe) {
-        case "bird":
-            speed = animal.flyingSpeed;
-            break;
-        case "horse":
-            speed = animal.runningSpeed;
-        default:
-            break;
-    }
-}
+//type casting
+const userInputElement = document.getElementById("user-input"); /*here basically getElementByid return HtmlElement type and if if i make userInputElemnt as
+HtmlInputelement type it will give error we want to typecast it before assing to userInputElement so
+we will typeCast it using as keyword */
+userInputElement.value = "Hi there";
