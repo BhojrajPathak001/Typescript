@@ -8,9 +8,13 @@ function merge(objA, objB) {
 const mergeObj1 = merge({ name: "bhojraj", hobbies: ["sports"] }, { age: 23 });
 const mergeObj2 = merge(//yaha par ese bhi specify kar skte hai but redundant he yeh
 { name: "bhojraj" }, { age: 23 });
-console.log(mergeObj1.name); // "bhojraj"
-console.log(mergeObj1.age); // 23
-console.log(mergeObj1.hobbies); // ['sports']
-console.log(mergeObj2.name); // "bhojraj"
-console.log(mergeObj2.age); // 23
-console.log(mergeObj2.hobbies); // ['sports']
+function countAndDescribe(element) {
+    let descriptionText = "Got no value";
+    if (element.length === 1) {
+        descriptionText = "got 1 element";
+    }
+    else if (element.length > 1) {
+        descriptionText = "got " + element.length + " elements";
+    }
+    return [element, descriptionText];
+}
