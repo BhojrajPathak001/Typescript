@@ -1,9 +1,5 @@
 "use strict";
-function add(a, b) {
-    if (typeof a === "string" || typeof b === "string") {
-        return a.toString() + b.toString();
-    }
-    return a + b;
-}
-const result = add("bhojraj ", "patahk");
-console.log(result.split(" "));
+const userInput = "";
+const storedData = userInput ?? "default"; //yeh kya krta hai ki agar userInput null or undeined hai tou he default
+//value leta hai wrna nhi leta hia this is called null coalescing
+console.log(storedData);

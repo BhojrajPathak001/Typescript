@@ -1,13 +1,5 @@
-type Combinable = string | number;
+const userInput = "";
+const storedData = userInput ?? "default"; //yeh kya krta hai ki agar userInput null or undeined hai tou he default
+//value leta hai wrna nhi leta hia this is called null coalescing
 
-function add(a: number, b: number):number;
-function add(a: string, b: string):string;
-function add(a: Combinable, b: Combinable) {
-  if (typeof a === "string" || typeof b === "string") {
-    return a.toString() + b.toString();
-  }
-  return a + b;
-}
-
-const result = add("bhojraj ", "patahk");
-console.log(result.split(" "));
+console.log(storedData);
