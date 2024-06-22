@@ -1,12 +1,13 @@
-interface ErrorContainer {
-  /*suppose humne error ke liye ek obejct chaheye jisme hamesa key value pair
-    string ka hone chaheye tou aise define kar skte hai so that it will enforce every error object to be like that 
-    and it is called index type below is the syntax of it
-  */
-  [prop: string]: string;
+type Combinable = string | number;
+
+function add(a: number, b: number):number;
+function add(a: string, b: string):string;
+function add(a: Combinable, b: Combinable) {
+  if (typeof a === "string" || typeof b === "string") {
+    return a.toString() + b.toString();
+  }
+  return a + b;
 }
 
-const errorBag: ErrorContainer = {
-  email: "not a valid email",
-  username: "must start with a capital character!",
-};
+const result = add("bhojraj ", "patahk");
+console.log(result.split(" "));
