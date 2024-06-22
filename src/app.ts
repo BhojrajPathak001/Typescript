@@ -1,75 +1,39 @@
-class Department {
+type type3 = string | number;
+
+function f1(n1: type3, n2: type3) {
+  if (typeof n1 === "string" || typeof n2 === "string") {
+    return n1.toString() + n2.toString();
+  }
+  return n1 + n2;
+}
+//-------------------------------------------------------
+type Admin = {
   name: string;
-  protected employees: string[] = []; // Private field using #
+  priviliges: string[];
+};
 
-  constructor(public id: string, n: string) {
-    this.id = id;
-    this.name = n;
-  }
+type Employee = {
+  name: string;
+  startDate: Date;
+};
 
-  describe(this: Department) {
-    console.log("Department: " + this.name);
-  }
+const e1: Employee = {
+  name: "bhojraj",
+  startDate: new Date(),
+};
 
-  addEmployee(employee: string) {
-    this.employees.push(employee);
-  }
+type unknownEmployee = Admin | Employee;
 
-  printEmployees() {
-    console.log(this.employees);
-  }
-}
+function printEmployee(employee: unknownEmployee) {
+  console.log(employee);
+  if ("priviliges" in employee) {
+    console.log("hello");
 
-class ItDepartment extends Department {
-  admins: string[];
-  constructor(id: string, admins: string[]) {
-    super(id, "IT");
-    this.admins = admins;
+    console.log("priviliges: ", employee.priviliges);
   }
-}
-
-class AccountingDepartment extends Department {
-  private lastReport: string;
-  constructor(id: string, private reports: string[]) {
-    super(id, "Accounting");
-    this.lastReport = reports[0];
-  }
-  get latestReport() {
-    if (this.lastReport) {
-      return this.lastReport;
-    }
-    throw new Error("No report found");
-  }
-
-  set latestReport(report: string) {
-    if (!report) {
-      throw new Error("No report provided");
-    }
-    this.lastReport = report;
-  }
-
-  addReport(text: string) {
-    this.reports.push(text);
-    this.lastReport = text;
-  }
-
-  printReports() {
-    console.log(this.reports);
-  }
-  addEmployee(employee: string): void {
-    if (employee === "bhojraj") return;
-    this.employees.push(employee);
+  if ("startDate" in employee) {
+    console.log("startDate: ", employee.startDate);
   }
 }
 
-const it = new ItDepartment("d1", ["bhojraj"]);
-it.addEmployee("bhojraj");
-it.addEmployee("kishanraj");
-
-// The following line will give an error because #employees is truly private
-// console.log(accounting.#employees); // SyntaxError in JavaScript and TypeScript error in TypeScript
-
-const accounting = new AccountingDepartment("A1", ["nothing here"]);
-
-accounting.latestReport="";
-console.log(accounting.latestReport);
+printEmployee(e1);
