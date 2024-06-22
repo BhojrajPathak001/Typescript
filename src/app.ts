@@ -1,39 +1,24 @@
-type type3 = string | number;
-
-function f1(n1: type3, n2: type3) {
-  if (typeof n1 === "string" || typeof n2 === "string") {
-    return n1.toString() + n2.toString();
-  }
-  return n1 + n2;
+interface Bird {
+  tpe: "bird";
+  flyingSpeed: number;
 }
-//-------------------------------------------------------
-type Admin = {
-  name: string;
-  priviliges: string[];
-};
-
-type Employee = {
-  name: string;
-  startDate: Date;
-};
-
-const e1: Employee = {
-  name: "bhojraj",
-  startDate: new Date(),
-};
-
-type unknownEmployee = Admin | Employee;
-
-function printEmployee(employee: unknownEmployee) {
-  console.log(employee);
-  if ("priviliges" in employee) {
-    console.log("hello");
-
-    console.log("priviliges: ", employee.priviliges);
-  }
-  if ("startDate" in employee) {
-    console.log("startDate: ", employee.startDate);
-  }
+interface Horse {
+  tpe: "horse";
+  runningSpeed: number;
 }
 
-printEmployee(e1);
+type Animal = Bird | Horse;
+
+function moveAnimal(animal: Animal) {
+  let speed;
+  switch (animal.tpe) {
+    case "bird":
+      speed = animal.flyingSpeed;
+      break;
+    case "horse":
+      speed = animal.runningSpeed;
+    default:
+      break;
+  }
+  
+}
