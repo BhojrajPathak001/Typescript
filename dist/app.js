@@ -1,5 +1,8 @@
 "use strict";
-const userInput = "";
-const storedData = userInput ?? "default"; //yeh kya krta hai ki agar userInput null or undeined hai tou he default
-//value leta hai wrna nhi leta hia this is called null coalescing
-console.log(storedData);
+function extractAndConvert(obj, key) {
+    return obj[key];
+}
+extractAndConvert({ name: "bhojraj" }, "name");
+/*so basically what problem can happen is humn object aur usme koi key pass kar rhe hai but agar wo key exists he nhi
+krti hogi object  me tou for that we use keyof provided by typescript wo check kr leta hai ki koi key exists krti hai ya nhi
+*/
