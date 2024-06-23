@@ -1,10 +1,12 @@
-function Logger(constructor: Function) {
-  //decorastors are called when the class it defined not when it is instantiated
-  console.log("logging");
-  console.log(constructor);
+function Logger(logString: string) {
+  //this are called facotry decorators into @Logger() bracket lagake call krna pdhta hai
+  return function (constructor: Function) {
+    console.log(logString);
+    console.log(constructor);
+  };
 }
 
-@Logger
+@Logger("hello")
 class Person {
   name = "Max";
   constructor() {
@@ -12,5 +14,3 @@ class Person {
   }
 }
 
-// const pers = new Person();
-// console.log(pers);
