@@ -1,16 +1,23 @@
 "use strict";
-function merge(objA, objB) {
-    //here extends object are constraints that we set
-    return Object.assign(objA, objB);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+function Logger(constructor) {
+    //decorastors are called when the class it defined not when it is instantiated
+    console.log("logging");
+    console.log(constructor);
 }
-/*jab hum generics user krte hai aise and hum jab wo generic function call krte hai tou T and U ki
-   jagah dynamic type chale jata hai apne aap humko specify nhi krna pdhta  */
-const mergeObj1 = merge({ name: "bhojraj", hobbies: ["sports"] }, { age: 23 });
-const mergeObj2 = merge(//yaha par ese bhi specify kar skte hai but redundant he yeh
-{ name: "bhojraj" }, { age: 23 });
-console.log(mergeObj1.name); // "bhojraj"
-console.log(mergeObj1.age); // 23
-console.log(mergeObj1.hobbies); // ['sports']
-console.log(mergeObj2.name); // "bhojraj"
-console.log(mergeObj2.age); // 23
-console.log(mergeObj2.hobbies); // ['sports']
+let Person = class Person {
+    name = "Max";
+    constructor() {
+        console.log("creating preson object...");
+    }
+};
+Person = __decorate([
+    Logger
+], Person);
+// const pers = new Person();
+// console.log(pers);
